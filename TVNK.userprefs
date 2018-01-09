@@ -1,0 +1,18 @@
+﻿<Properties StartupConfiguration="{AD4682D4-A272-44C3-A770-83E053F23FB0}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TVNK/ConfigModel.cs">
+    <Files>
+      <File FileName="TVNK/Program.cs" Line="2" Column="1" />
+      <File FileName="TVNK/CasparService.cs" Line="34" Column="14" />
+      <File FileName="TVNK/TwitterService.cs" Line="12" Column="49" />
+      <File FileName="TVNK/ConfigService.cs" Line="8" Column="10" />
+      <File FileName="TVNK/ConfigModel.cs" Line="4" Column="5" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.TVNK PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
