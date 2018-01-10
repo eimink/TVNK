@@ -108,6 +108,8 @@
     <Compile Include="TwitterService.cs" />
     <Compile Include="ConfigService.cs" />
     <Compile Include="ConfigModel.cs" />
+    <Compile Include="CasparCommand.cs" />
+    <Compile Include="CasparTemplateData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net.Sockets;
+
 namespace TVNK
 {
     public class CasparService
@@ -52,30 +53,38 @@ namespace TVNK
 
         public void SendCommand(string command)
         {
-            try
+            Console.WriteLine(command);
+            if (isConnected)
             {
-                var reader = new StreamReader(casparClient.GetStream());
-                var writer = new StreamWriter(casparClient.GetStream());
-                writer.WriteLine(command);
-                var reply = reader.ReadLine();
-                Console.WriteLine(reply);
-                if (reply.Contains("201"))
+                try
                 {
-                    reply = reader.ReadLine();
+                    var reader = new StreamReader(casparClient.GetStream());
+                    var writer = new StreamWriter(casparClient.GetStream());
+                    writer.WriteLine(command);
+                    var reply = reader.ReadLine();
                     Console.WriteLine(reply);
-                }
-                else if (reply.Contains("200"))
-                {
-                    while (reply.Length > 0)
+                    if (reply.Contains("201"))
                     {
                         reply = reader.ReadLine();
                         Console.WriteLine(reply);
                     }
+                    else if (reply.Contains("200"))
+                    {
+                        while (reply.Length > 0)
+                        {
+                            reply = reader.ReadLine();
+                            Console.WriteLine(reply);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("CasparCG Communication exception: " + ex.Message);
                 }
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine("CasparCG Communication exception: " + ex.Message);
+                Connect();
             }
         }
     }
