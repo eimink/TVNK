@@ -1,39 +1,22 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace TVNK
 {
-    class MainClass
+    static class Program
     {
-
-        public static CasparService casparService;
-
-        public static void Main(string[] args)
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
         {
-            ConfigService configService = new ConfigService();
-            casparService = new CasparService(configService.settings.caspar);
-            TwitterService twitterService = new TwitterService(configService.settings.twitter,false);
-            twitterService.StartMonitoring(configService.settings.twitter.searchString, ShowTweet);
-            if (twitterService.StatusCode >= 0)
-            {
-                Console.WriteLine("TVNK! Press ENTER to quit...");
-                while (!Console.KeyAvailable);
-            }
-            twitterService.Close();
-            casparService.Disconnect();
-        }
-
-        public static void ShowTweet(object sender, Tweetinvi.Events.MatchedTweetReceivedEventArgs args)
-        {
-            Dictionary<string, string> parameters = new Dictionary<string, string>();
-            parameters.Add("tweet",args.Tweet.Text);
-            parameters.Add("profileImageUrl",args.Tweet.CreatedBy.ProfileImageUrl400x400);
-            StringBuilder sb = new StringBuilder();
-            sb.Append("\"ShowTweet('");
-            sb.Append(Newtonsoft.Json.JsonConvert.SerializeObject(parameters));
-            sb.Append("')\"");
-            casparService.SendCommand(CasparCommand.Invoke(1,10,sb.ToString()));
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form1());
         }
     }
 }

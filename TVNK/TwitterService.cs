@@ -1,5 +1,6 @@
 ﻿using System;
 using Tweetinvi;
+using System.Diagnostics;
 
 namespace TVNK
 {
@@ -51,7 +52,7 @@ namespace TVNK
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error starting Twitter monitoring: " + ex.Message);
+                Debug.WriteLine("Error starting Twitter monitoring: " + ex.Message);
                 status = -1;
             }
 
@@ -72,7 +73,7 @@ namespace TVNK
 
         private void newTweet(Object sender, Tweetinvi.Events.MatchedTweetReceivedEventArgs args)
         {
-            Console.WriteLine("New tweet found: " + args.Tweet);
+            Debug.WriteLine("New tweet found: " + args.Tweet);
         }
     }
 }
